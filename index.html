@@ -41,7 +41,7 @@
                             <img :src="ketchup">
                             <img :src="mostarda">
                             <img :src="maionese">
-                            <img :src="burger">
+                            <img :src="hamburguer">
                             <img :src="pao[1]">
 
                         </div> <!-- col -->
@@ -145,6 +145,40 @@
                         </div>
                     </div>
 
+                       <!-- burger -->
+                       <div class="row mt-2">
+                        <div class="col">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    Burger
+                                </div>
+                    <div class="card-body">
+
+                        <div class="form-check form-check-inline">
+
+                                <input type="checkbox" class="form-check-input" value="bovino"
+                                    v-model="inputHamburguer">
+
+                                <label class="form-check-label"> Bovino </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+
+                                <input type="checkbox" class="form-check-input" value="frango"
+                                    v-model="inputHamburguer">
+
+                                <label class="form-check-label"> Frango </label>
+                            </div>
+                            <!-- vegetal -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" value="soja"
+                                    v-model="inputHamburguer">
+
+                                <label class="form-check-label"> Soja </label>
+                            </div>
+                    
+
 
 
 
@@ -173,6 +207,7 @@
                 inputTipoPao: '',  /* radio = Obrigatorio */
                 inputSalada: [], /* checkbox = opcional */
                 inputMolhos: [],
+                inputHamburguer: '',
                 etapa: 1,
 
 
@@ -219,12 +254,24 @@
                      return 'imagens/padrao/molho.png'
 
                 },
-                
+
+                hamburguer () {
+                    switch (this.inputHamburguer) {
+                        case 'bovino':
+                            return 'imagens/bovino.png'
+                        case 'frango':
+                            return 'imagens/frango.png'
+                        case 'soja':
+                            return 'imagens/soja.png'
+                        default:
+                            return 'imagens/padrao/hamburguer.png'
+                    }
+                }, 
 
             },
+                
 
-
-        })
+           })
     </script>
 
 </body>
