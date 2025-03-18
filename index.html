@@ -146,38 +146,59 @@
                     </div>
 
                        <!-- burger -->
-                       <div class="row mt-2">
+                        <!-- Tipos Hamburguer -->
+                    <div class="row mt-2">
                         <div class="col">
-
                             <div class="card">
-                                <div class="card-header">
-                                    Burger
+
+                                <!-- TITULO - Tipos de Hamburguer -->
+                                <div class="card-header"> Tipo de Hamburguer </div>
+
+                                <!-- Card Body Tipos de Hamburguer -->
+                                <div class="card-body">
+
+                                    <!-- carne -->
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" value="bovino"
+                                            v-model="inputHamburguer">
+
+                                        <label class="form-check-label"> Bovino </label>
+                                    </div>
+
+                                    <!-- frango -->
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" value="frango"
+                                            v-model="inputHamburguer">
+
+                                        <label class="form-check-label"> Frango </label>
+                                    </div>
+
+                                    <!-- vegetal -->
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" value="soja"
+                                            v-model="inputHamburguer">
+
+                                        <label class="form-check-label"> Soja </label>
+                                    </div>
+
                                 </div>
-                    <div class="card-body">
 
-                        <div class="form-check form-check-inline">
 
-                                <input type="checkbox" class="form-check-input" value="bovino"
-                                    v-model="inputHamburguer">
-
-                                <label class="form-check-label"> Bovino </label>
                             </div>
+                        </div>
+                    </div> <!-- Fim Tipos Hamburguer -->
 
-                            <div class="form-check form-check-inline">
+                    <!-- Fazer o PEDIDO -->
+                    <div class="row mt-2">
 
-                                <input type="checkbox" class="form-check-input" value="frango"
-                                    v-model="inputHamburguer">
+                        <div class="col d-flex justify-content-end">
 
-                                <label class="form-check-label"> Frango </label>
-                            </div>
-                            <!-- vegetal -->
-                            <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" value="soja"
-                                    v-model="inputHamburguer">
-
-                                <label class="form-check-label"> Soja </label>
-                            </div>
-                    
+                            <button class="btn btn-primary">
+                                Fazer o Pedido
+                            </button>
+                            
+                        </div>
+                    </div>
 
 
 
