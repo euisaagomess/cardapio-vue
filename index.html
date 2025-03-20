@@ -193,10 +193,10 @@
 
                         <div class="col d-flex justify-content-end">
 
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" @click="fazerPedido()">
                                 Fazer o Pedido
                             </button>
-                            
+                    
                         </div>
                     </div>
 
@@ -215,6 +215,63 @@
                 </div> <!-- Fim Etapa 1 -->
                 <!-- Fim col md -->
 
+                <div class="col-md-6" v-if="etapa == 2">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    Informe os seus Dados
+                                </div> <!-- fim titulo -->
+
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Seu Nome
+                                        </label>
+
+                                        <input type="text" class="form-control" v-model="inputNome">
+
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Mesa
+                                        </label>
+
+                                        <input type="text" class="form-control" v-model="inputMesa">
+
+
+                                    </div>
+
+                                </div> <!-- fim body -->
+                            </div> <!-- fim card -->
+                        </div>
+                    </div>
+
+                    <div class="row mt-2"> 
+
+                        <div class="col d-flex justify-content-between">
+
+                            <button type="button" class="btn btn-warning" @click="etapa -=1">
+                                Editar o Lanche
+                            </button>
+
+                            <button type="button" class="btn btn-success" @click="confirmarPedido()">
+                                Confirmar
+                            </button>
+                           
+
+                        </div>
+                    
+                    </div>
+
+
+
+
+
+                </div> <!-- fim da etapa 2 -->
+
             </div> <!-- fim ROW -->
         </div> <!-- FIM APP -->
     </div> <!-- FIM container -->
@@ -225,11 +282,14 @@
             el: '#app',
 
             data: {  // atributos // propriedades
+                etapa: 1, 
                 inputTipoPao: '',  /* radio = Obrigatorio */
                 inputSalada: [], /* checkbox = opcional */
                 inputMolhos: [],
                 inputHamburguer: '',
-                etapa: 1,
+
+                inputNome: '',
+                inputMesa: '',
 
 
             },
@@ -254,21 +314,21 @@
                     return 'imagens/padrao/alface.png'
                 },
 
-                ketchup () {
+                ketchup() {
                     if (this.inputMolhos.includes('ketchup')) {
                         return 'imagens/ketchup.png'
                     }
                      return 'imagens/padrao/molho.png'
                 },
 
-                mostarda () {
+                mostarda() {
                     if (this.inputMolhos.includes('mostarda')) {
                         return 'imagens/mostarda.png'
                     }
                      return 'imagens/padrao/molho.png'
                 },
 
-                maionese () {
+                maionese() {
                     if (this.inputMolhos.includes('maionese')) {
                         return 'imagens/maionese.png'
                     }
@@ -276,7 +336,7 @@
 
                 },
 
-                hamburguer () {
+                hamburguer() {
                     switch (this.inputHamburguer) {
                         case 'bovino':
                             return 'imagens/bovino.png'
@@ -288,9 +348,31 @@
                             return 'imagens/padrao/hamburguer.png'
                     }
                 }, 
+                
+            },
+            methods: {
+                fazerPedido() {
+                    /* se o Pão e Carne forem selecionados */
+                    if(this.inputTipoPao && this.inputHamburguer) {
+                        this.etapa = 2
+                        /* avança para etapa 2 */
+                    }
+                    else {
+                        alert('Você precisa selecionar no mínimo um pão e uma carne')
+                    }
+
+                },
+
+                confirmarPedido() {
+                    if(this.inputNome && this.inputMesa) {
+                        this.etapa = 3 
+                    }
+                    else {
+                        alert('Você precisa informar o seu Nome e a Mesa.')
+                    }
+                },
 
             },
-                
 
            })
     </script>
