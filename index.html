@@ -261,17 +261,44 @@
                                 Confirmar
                             </button>
                            
-
                         </div>
                     
                     </div>
 
-
-
-
-
                 </div> <!-- fim da etapa 2 -->
 
+                <div class="col-md-6" v-if="etapa ==3">
+                    <!-- pedido confirmado -->
+                     <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    Pedido confirmado
+                                </div>
+                                <div class="card-body">
+                                    <p> Agora é só aguardar 10 minutos!</p>
+                                    <p>Vamos chamar você em breve.</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                     </div>
+ 
+                </div> 
+                <!-- repetir pedido -->
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary" @click="etapa = 1"> Repetir Pedido </button>
+
+                        <button type="button" class="btn btn-success" @click="novoPedido()"> Novo Pedido </button>
+                    </div>
+                </div>
+            </div>
+
+               
             </div> <!-- fim ROW -->
         </div> <!-- FIM APP -->
     </div> <!-- FIM container -->
@@ -290,7 +317,7 @@
 
                 inputNome: '',
                 inputMesa: '',
-
+                novoPedidoAssincrono: null
 
             },
 
@@ -370,6 +397,16 @@
                     else {
                         alert('Você precisa informar o seu Nome e a Mesa.')
                     }
+                },
+                novoPedido() {
+                    this.etapa = 3
+
+                    this.inputTipoPao = ''
+                    this.inputSalada = []
+                    this.inputMolhos = []
+                    this.inputHamburguer = '' 
+                    this.inputNome = ''
+                    this.inputEndereco = '' 
                 },
 
             },
