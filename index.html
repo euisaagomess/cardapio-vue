@@ -323,7 +323,8 @@
                 inputBurger: '',
 
                 inputNome: '',
-                inputMesa: '',                          
+                inputMesa: '', 
+                novoPedidoAssincrono: null                         
 
             },
 
@@ -433,6 +434,14 @@
 
                 },
 
+            },
+            watch: { 
+                etapa(novoValor) {
+                    if (novoValor == 1) {
+                        clearTimeout(this.novoPedidoAssincrono)
+                    }
+
+                }
             },
         })
     </script>
